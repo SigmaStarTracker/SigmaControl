@@ -8,7 +8,9 @@ export default defineConfig({plugins: [
       outDir: '.svelte-kit/output/client',
       registerType: 'autoUpdate',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}']
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        navigateFallback: '/index.html',
+        navigateFallbackDenylist: [/^\/_app\//],
       },
       manifest: {
         name: 'SigmaControl',
