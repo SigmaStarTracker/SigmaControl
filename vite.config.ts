@@ -5,10 +5,11 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({plugins: [
     tailwindcss(), sveltekit(), SvelteKitPWA({
-      outDir: '.svelte-kit/output/client',
+      outDir: 'build',
       registerType: 'autoUpdate',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        globDirectory: 'build',
         navigateFallback: '/index.html',
         navigateFallbackDenylist: [/^\/_app\//],
       },
