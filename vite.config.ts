@@ -8,8 +8,14 @@ export default defineConfig({plugins: [
       outDir: 'build',
       registerType: 'autoUpdate',
       workbox: {
-        navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/_app\//],
+        runtimeCaching: [{
+          urlPattern: ({ request }) => request.mode === 'navigate',
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'pages',
+            networkTimeoutSeconds: 3,
+          }
+        }]
       },
       manifest: {
         name: 'SigmaControl',
