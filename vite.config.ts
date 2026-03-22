@@ -8,8 +8,6 @@ export default defineConfig({plugins: [
       outDir: 'build',
       registerType: 'autoUpdate',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        globDirectory: 'build',
         navigateFallback: '/index.html',
         navigateFallbackDenylist: [/^\/_app\//],
       },
