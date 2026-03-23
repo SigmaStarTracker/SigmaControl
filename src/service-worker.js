@@ -1,7 +1,8 @@
 import { build, files, version } from '$service-worker';
 
 const CACHE = `cache-${version}`;
-const ASSETS = [...build, ...files];
+const ASSETS = [...build, ...files, '/'];
+console.log('SW assets:', ASSETS);
 
 self.addEventListener('install', (event) => {
   async function addFilesToCache() {
@@ -26,6 +27,10 @@ self.addEventListener('fetch', (event) => {
     const cache = await caches.open(CACHE);
     const cachedResponse = await cache.match(event.request);
     if (cachedResponse) return cachedResponse;
+    // fallback to '/' for navigation requests
+    if (event.request.mode === 'navigate') {
+      return cache.match('/');
+    }
     return fetch(event.request);
   }
   event.respondWith(respond());
