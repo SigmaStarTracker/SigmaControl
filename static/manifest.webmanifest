@@ -1,0 +1,7 @@
+{
+  "name": "SigmaControl",
+  "short_name": "Control",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
